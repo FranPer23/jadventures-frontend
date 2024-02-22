@@ -4,14 +4,17 @@ const Navbar = () =>
 {
     return(
         <>
-            <nav class="navbar navbar-expand-lg navbar-expand-sm bg-primary text-light mb-5">
-                <div>
-                <div class="navbar-nav">
-                    <ul class="navbar-nav me-auto my-3 mb-lg-0 ">
-                        <li><Link class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/" >All Guilds</Link></li>
-                        <li><Link class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/" >Login</Link></li>
-                    </ul>
-                </div>
+            <nav class="navbar navbar-expand-lg navbar-expand-sm bg-success mb-5">
+                <div className="container">
+                    <div class="navbar-nav">
+                        <Link class="btn btn-outline-light" to="/" >All Guilds</Link>
+                    </div>
+                    <div class="navbar-nav">
+                        <Link class="btn disabled text-light" to="/" >My Quest</Link>
+                    </div>
+                    <div class="navbar-nav">
+                        <Link class="btn btn-outline-light" to="/" >Login</Link>
+                    </div>
                 </div>
             </nav>
         </>
