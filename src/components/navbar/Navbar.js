@@ -1,7 +1,15 @@
+import { useAtom } from "jotai";
 import { Link } from "react-router-dom";
+import { guildLogged, partyLogged } from "../../App";
+
 
 const Navbar = () =>
 {
+
+    const [party, setParty] = useAtom(partyLogged);
+    const [guild, setGuild] = useAtom(guildLogged);
+
+
     return(
         <>
             <nav class="navbar navbar-expand-lg navbar-expand-sm bg-success mb-5">
