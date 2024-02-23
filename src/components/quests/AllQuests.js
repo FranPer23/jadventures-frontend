@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import QuestOverview from "./QuestOverview";
 import axios from "axios";
@@ -83,11 +82,11 @@ export default function AllQuests(props) {
                                 onChange={(e) => setMinRank(e.target.value)}
                             >
                                 <option value="Min Rank">Min Rank</option>
-                                <option value="S">S</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
                                 <option value="D">D</option>
+                                <option value="C">C</option>
+                                <option value="B">B</option>
+                                <option value="A">A</option>
+                                <option value="S">S</option>
                             </select>
                             <select
                                 className="form-select ms-2"
