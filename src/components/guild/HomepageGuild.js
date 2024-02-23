@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { guildLogged } from '../../App';
 import QuestOverview from "../quests/QuestOverview";
+import { useAtom } from "jotai";
 
 export default function HomepageGuild(props) {
     const [allQuests, setAllQuests] = useState([]);
@@ -11,11 +12,12 @@ export default function HomepageGuild(props) {
     const [maxRank, setMaxRank] = useState("Max Rank");
     const [minReward, setMinReward] = useState("");
     const [area, setArea] = useState("");
+    const [gilda, setGilda] = useAtom(guildLogged);
 
     useEffect(() => {
-        axios.get("/guilds"+guildLogged.id+"/quests").then((resp) => {
-            setAllQuests(resp.data);
-            setFilteredQuests(resp.data);
+        axios.get("/guilds"+gilda.id+"/quests").then((resp) => {
+            setAllQuests(resp.data.postedQuests);
+            setFilteredQuests(resp.data.postedQuests);
         });
     }, []);
 

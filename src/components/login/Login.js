@@ -3,12 +3,17 @@ import { useAtom } from "jotai";
 import React, { useState } from 'react';
 import { guildLogged } from '../../App';
 import { useNavigate } from 'react-router-dom';
+
+
 export default function Login() {
+    
     const [name, setName] = useState([]);
     const [authentication_seal, setAuthenticationseal] = useState([]);
-    const [guild, setGuild] = useAtom(guildLogged);
+    const [Gilda, setGilda] = useAtom(guildLogged);
     const navigate = useNavigate();
-    function Login() {   
+   
+    function Accedi() {   
+
         const loginGuild = {
             "name": name,
             "authentication_seal": authentication_seal
@@ -17,8 +22,8 @@ export default function Login() {
         axios.post("/guilds/login", loginGuild)
             .then(response => { 
                 if (response.data && response.status === 200) {
-                    setGuild(response.data);
-                    navigate(`/guilds/${response.data.guild.id}/quests`);
+                    setGilda(response.data)
+                    navigate("/");
                 }
             })
             .catch(error => {
@@ -46,7 +51,7 @@ export default function Login() {
                             onChange={(e) => setAuthenticationseal(e.target.value)}
                     />
                 </div>
-                <button className="btn btn-dark mt-3" onClick={Login}>Login</button>
+                <button className="btn btn-dark mt-3" onClick={Accedi}>Login</button>
             </div>
         </>
     )

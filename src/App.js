@@ -7,8 +7,8 @@ import Login from './components/login/Login';
 import { atom } from 'jotai';
 import HomepageGuild from './components/guild/HomepageGuild';
 
-export const partyLogged = atom(null);
-export const guildLogged = atom(null);
+export const partyLogged = atom();
+export const guildLogged = atom();
 
 function App() {
   return (
