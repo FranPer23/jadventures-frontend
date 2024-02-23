@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import QuestOverview from "./QuestOverview";
 import axios from "axios";
+import { guildLogged } from '../../App';
+import QuestOverview from "../quests/QuestOverview";
 
-export default function AllQuests(props) {
+export default function HomepageGuild(props) {
     const [allQuests, setAllQuests] = useState([]);
     const [filteredQuests, setFilteredQuests] = useState([]);
     const [filterType, setFilterType] = useState("Type");
@@ -10,9 +11,9 @@ export default function AllQuests(props) {
     const [maxRank, setMaxRank] = useState("Max Rank");
     const [minReward, setMinReward] = useState("");
     const [area, setArea] = useState("");
-    
+
     useEffect(() => {
-        axios.get("/quests").then((resp) => {
+        axios.get("/guilds"+guildLogged.id+"/quests").then((resp) => {
             setAllQuests(resp.data);
             setFilteredQuests(resp.data);
         });
