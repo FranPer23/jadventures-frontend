@@ -1,0 +1,21 @@
+.loginForm{
+    max-width: 50%;
+}
+
+.questOverview{
+    max-width: 300px;
+    min-width: 180px;
+}
+
+.mainOverview{
+    width: 100%;
+}
+
+.guildName{
+    margin:auto
+}
+
+.img-hover-darken:hover {
+    filter: brightness(70%);
+    transition: 0.3s;
+}

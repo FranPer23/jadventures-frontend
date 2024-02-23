@@ -2,6 +2,8 @@ import { useAtom } from "jotai";
 import { Link } from "react-router-dom";
 import { guildLogged, partyLogged } from "../../App";
 import { useState } from "react";
+import '../../styles.css';
+
 
 
 const Navbar = () =>
@@ -33,8 +35,8 @@ const Navbar = () =>
                     <Link className={`btn btn-outline-light ${guild || party ? 'invisible' : ''}`} to="/login">Login</Link>
                         {guild || party ? (
                             <>
-                                <h5 className="text-light text-center me-3" style={{margin:"auto"}}>{guild.name}</h5>
-                                <img className="border border-light" style={{width:"50px",borderRadius:"30px", cursor:"pointer"}} onClick={logout} src={guild.seal_img_url} alt="Guild Seal" />
+                                <h5 className="guildName text-light text-center me-3"><u>{guild.name}</u></h5>
+                                <img title="Click to Logout" className="img-hover-darken rounded-circle border border-light" style={{width:"50px", cursor:"pointer"}} onClick={logout} src={guild.seal_img_url} alt="Guild Seal" />
                             </>
                         ) : null}
                     </div>
