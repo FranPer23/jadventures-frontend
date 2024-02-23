@@ -27,7 +27,7 @@ const Navbar = () =>
                         <Link class="btn btn-outline-light" to="/" >All Quests</Link>
                     </div>
                     <div class="navbar-nav">
-                    <Link className={`btn ${guild || party ? 'btn-outline-light' : 'disabled text-light'}`} to="/" >My Quest</Link>
+                    <Link className={`btn ${guild || party ? 'btn-outline-light' : 'disabled text-light'}`} to={guild ? `guilds/${guild.id}/quests` : '/login'} >My Quest</Link>
                     </div>
                     <div class="navbar-nav">
                     <Link className={`btn btn-outline-light ${guild || party ? 'invisible' : ''}`} to="/login">Login</Link>

@@ -16,8 +16,8 @@ export default function HomepageGuild(props) {
 
     useEffect(() => {
         axios.get("/guilds"+gilda.id+"/quests").then((resp) => {
-            setAllQuests(resp.data);
-            setFilteredQuests(resp.data);
+            setAllQuests(resp.data.postedQuests);
+            setFilteredQuests(resp.data.postedQuests);
         });
     }, []);
 
