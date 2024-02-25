@@ -3,7 +3,7 @@ import QuestOverview from "./QuestOverview";
 import axios from "axios";
 import '../../styles.css';
 
-export default function AllQuests(props) {
+export default function AllQuests() {
     const [allQuests, setAllQuests] = useState([]);
     const [filteredQuests, setFilteredQuests] = useState([]);
     const [filterType, setFilterType] = useState("Type");

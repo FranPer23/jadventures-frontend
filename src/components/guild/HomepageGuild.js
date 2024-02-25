@@ -5,10 +5,11 @@ import QuestOverview from "../quests/QuestOverview";
 import { useAtom } from "jotai";
 import '../../styles.css';
 
-export default function HomepageGuild(props) {
+export default function HomepageGuild() {
     const [allQuests, setAllQuests] = useState([]);
     const [gilda, setGilda] = useAtom(guildLogged);
     const [currentDate,setCurrentDate] = useState(new Date());
+    const [reRender, setReRender] = useState(false);
     const [questSubmissionCount, setQuestSubmissionCount] = useState(0); // Aggiunto per tracciare il numero di invii
 
     const [quest, setQuest] = useState({
@@ -27,8 +28,17 @@ export default function HomepageGuild(props) {
     useEffect(() => {
         axios.get("/guilds/" + gilda.id + "/quests").then((resp) => {
             setAllQuests(resp.data.postedQuests);
+            if (reRender) {
+                setReRender(false);
+            }
         });
-    }, [questSubmissionCount, gilda.id]);
+    }, [questSubmissionCount, gilda.id, reRender]);
+
+    function deleteQuest(id){
+        axios.delete("/quests/"+ id).then((resp) => {
+            setReRender(true);
+        });
+    }
 
     function sendForm() {
         axios.post("/quests", quest).then(() => {
@@ -136,7 +146,7 @@ export default function HomepageGuild(props) {
                 <div className="col-9 pe-5">
                     <div className="row gy-5">
                         {allQuests.map((q) => (
-                            <QuestOverview key={q.id} {...q} />
+                            <QuestOverview key={q.id} {...q} deleteQuest={deleteQuest}/>
                         ))}
                     </div>
                 </div>
