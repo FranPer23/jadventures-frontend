@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { Link } from "react-router-dom";
 import { guildLogged, partyLogged } from "../../App";
-import { useState } from "react";
+
 
 
 const Navbar = () =>

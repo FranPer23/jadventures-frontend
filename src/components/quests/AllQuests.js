@@ -57,7 +57,7 @@ export default function AllQuests(props) {
 
     return (
         <>
-            <div className="row gy-5 px-3">
+            <div className="row gy-5 px-3 m-0" >
                 <div className="col-3 text-center">
                     <div>
                         <h2>Filter</h2>
