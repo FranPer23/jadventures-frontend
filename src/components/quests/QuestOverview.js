@@ -1,6 +1,12 @@
 import '../../styles.css';
+import { guildLogged, partyLogged } from "../../App";
+import { useAtom } from 'jotai';
 
 export default function QuestOverview(props) {
+
+    const [party, setParty] = useAtom(partyLogged);
+    const [guild, setGuild] = useAtom(guildLogged);
+
     return (
         <>
             <div className="questOverview col-4 d-flex justify-content-center text-center flex-wrap">
@@ -14,6 +20,17 @@ export default function QuestOverview(props) {
                         </div>
                         <div className="mt-auto">
                             <img style={{ width: "100%", maxHeight: "150px" }} src={props.map_url} alt="Map" />
+                        </div>
+                        {(guild || party) && (guild.id || party.id) === (props.id || props.patron.id) ? (
+                            <>
+                                <div>
+                                    <button>Modifica</button>
+                                    <button>Cancella</button>
+                                </div>
+                            </>
+                        ) : null}
+                        <div>
+                            <button>Dettagli</button>
                         </div>
                     </div>
                 </div>

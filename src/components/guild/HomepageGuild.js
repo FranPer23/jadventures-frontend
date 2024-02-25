@@ -9,9 +9,11 @@ export default function HomepageGuild(props) {
     const [allQuests, setAllQuests] = useState([]);
     const [gilda, setGilda] = useAtom(guildLogged);
     const [currentDate,setCurrentDate] = useState(new Date());
+    const [questSubmissionCount, setQuestSubmissionCount] = useState(0); // Aggiunto per tracciare il numero di invii
+
     const [quest, setQuest] = useState({
         date_created: currentDate,
-        status: "",
+        status: "PENDING",
         rank: "",
         reward: "",
         area: "",
@@ -25,26 +27,32 @@ export default function HomepageGuild(props) {
     useEffect(() => {
         axios.get("/guilds/" + gilda.id + "/quests").then((resp) => {
             setAllQuests(resp.data.postedQuests);
-
         });
-    }, []);
+    }, [questSubmissionCount, gilda.id]);
 
-    function sendForm() 
-    {
-        axios.post("/quests", quest).then(
-            () => 
-            {
-                setQuest({
-                            status: "",
-                            rank: "",
-                            reward: "",
-                            area: "",
-                            map_url: "",
-                            description: "",
-                            type: "",
-                        });
-            })
+    function sendForm() {
+        axios.post("/quests", quest).then(() => {
+            // Resetta lo stato della quest a valori di default o vuoti
+            setQuest({
+                date_created: new Date(), // Assicurati che la data venga aggiornata se necessario
+                status: "PENDING",
+                rank: "",
+                reward: "",
+                area: "",
+                date_completed: "",
+                map_url: "",
+                description: "",
+                type: "",
+                patron: ""
+            });
+            // Incrementa il contatore per forzare il refresh della lista delle quest
+            setQuestSubmissionCount(prevCount => prevCount + 1);
+        }).catch((error) => {
+            console.error("There was an error submitting the quest:", error);
+        });
     }
+
+
     function synchronize(e) {
         let clone = { ...quest };
         clone[e.target.name] = e.target.value;
@@ -111,19 +119,6 @@ export default function HomepageGuild(props) {
                             <div className="form-group mb-1">
                                 <label for="exampleFormControlTextarea1">Description</label>
                                 <textarea onChange={synchronize} rows={5} value={quest.description} name="description" class="form-control" aria-describedby="" />
-                            </div>
-
-                            {/* STATO */}
-                            <div class="selector form-group mb-3">
-                                <label for="exampleFormControlTextarea1">Status</label>
-                                <select onChange={synchronize} value={quest.status} name="status" className="form-select"
-                                    aria-label="Default select example">
-                                    <option value="" selected hidden>Please select</option>
-                                    <option value="awaiting">awaiting</option>
-                                    <option value="pending">pending</option>
-                                    <option value="success">ernesto</option>
-                                    <option value="failed">federico</option>
-                                </select>
                             </div>
 
                             <button
