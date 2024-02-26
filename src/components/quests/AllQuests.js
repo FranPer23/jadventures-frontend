@@ -11,13 +11,22 @@ export default function AllQuests() {
     const [maxRank, setMaxRank] = useState("Max Rank");
     const [minReward, setMinReward] = useState("");
     const [area, setArea] = useState("");
+    const [reRender, setReRender] = useState(false);
     
     useEffect(() => {
         axios.get("/quests").then((resp) => {
             setAllQuests(resp.data);
             setFilteredQuests(resp.data);
         });
-    }, []);
+    }, [reRender]);
+
+    
+    function deleteQuest(id){
+        axios.delete("/quests/"+ id).then((resp) => {
+            setReRender(true);
+        });
+    }
+
 
     function handleFilter() {
         let filteredData = [...allQuests];
@@ -122,7 +131,7 @@ export default function AllQuests() {
                 <div className="col-9 pe-5">
                     <div className="row gy-5">
                         {filteredQuests.map((q) => (
-                            <QuestOverview key={q.id} {...q} />
+                            <QuestOverview key={q.id} {...q} deleteQuest={deleteQuest}/>
                         ))}
                     </div>
                 </div>
