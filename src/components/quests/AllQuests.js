@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import QuestOverview from "./QuestOverview";
 import axios from "axios";
+import '../../styles.css';
 
-export default function AllQuests(props) {
+export default function AllQuests() {
     const [allQuests, setAllQuests] = useState([]);
     const [filteredQuests, setFilteredQuests] = useState([]);
     const [filterType, setFilterType] = useState("Type");
@@ -57,7 +58,7 @@ export default function AllQuests(props) {
 
     return (
         <>
-            <div className="row gy-5 px-3 m-0" >
+            <div className="mainOverview row gy-5 px-3">
                 <div className="col-3 text-center">
                     <div>
                         <h2>Filter</h2>

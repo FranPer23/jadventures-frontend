@@ -6,6 +6,7 @@ import AllQuests from './components/quests/AllQuests';
 import Login from './components/login/Login';
 import { atom } from 'jotai';
 import HomepageGuild from './components/guild/HomepageGuild';
+import QuestDetails from './components/quests/QuestDetails';
 
 export const partyLogged = atom();
 export const guildLogged = atom();
@@ -18,6 +19,7 @@ function App() {
         <Route index element={<AllQuests />}/>
         <Route path='login' element={<Login />}/>
         <Route path='guilds/:id/quests' element={<HomepageGuild />}/>
+        <Route path='questdetails/:id' element={<QuestDetails />}/>
       </Routes>
     </BrowserRouter>
   );

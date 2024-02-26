@@ -3,6 +3,7 @@ import { useAtom } from "jotai";
 import React, { useState } from 'react';
 import { guildLogged } from '../../App';
 import { useNavigate } from 'react-router-dom';
+import '../../styles.css';
 
 
 export default function Login() {
@@ -35,7 +36,7 @@ export default function Login() {
     return (
         <>
 
-<div className="container border border-success rounded text-center p-4" style={{maxWidth:"50%"}} >
+<div className="loginForm container border border-success rounded text-center p-4" >
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Guild Name</label>
                 <input className="form-control mt-3"
