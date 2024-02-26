@@ -2,7 +2,6 @@ import '../../styles.css';
 import { guildLogged, partyLogged } from "../../App";
 import { useAtom } from 'jotai';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export default function QuestOverview(props) {
@@ -16,6 +15,8 @@ export default function QuestOverview(props) {
         }
         return guild.id;
     });
+
+
 
     return (
         <>
@@ -38,7 +39,7 @@ export default function QuestOverview(props) {
                         </div>
                         <div className="mt-auto">
                             <img style={{ width: "100%", maxHeight: "150px" }} src={props.map_url} alt="Map" />
-                            <Link className='btn btn-outline-dark mt-3' to={"questdetails/"+props.id}>Details</Link>
+                            <Link className='btn btn-outline-dark mt-3' to={"/questdetails/"+props.id}>Details</Link>
                         </div>
                     </div>
                 </div>

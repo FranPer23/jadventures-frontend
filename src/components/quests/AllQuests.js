@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import QuestOverview from "./QuestOverview";
 import axios from "axios";
 import '../../styles.css';
+import { deleteQ } from "../../util/axiosCall";
 
 export default function AllQuests() {
     const [allQuests, setAllQuests] = useState([]);
@@ -21,12 +22,16 @@ export default function AllQuests() {
     }, [reRender]);
 
     
-    function deleteQuest(id){
-        axios.delete("/quests/"+ id).then((resp) => {
-            setReRender(true);
-        });
-    }
+    // function deleteQuest(id){
+    //     axios.delete("/quests/"+ id).then((resp) => {
+    //         setReRender(true);
+    //     });
+    // }
 
+
+    function deleteQuest(id) {
+        deleteQ(id, setReRender)
+    }
 
     function handleFilter() {
         let filteredData = [...allQuests];

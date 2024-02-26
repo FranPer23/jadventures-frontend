@@ -13,6 +13,8 @@ export default function Login() {
     const [Gilda, setGilda] = useAtom(guildLogged);
     const navigate = useNavigate();
    
+
+    
     function Accedi() {   
 
         const loginGuild = {
@@ -24,6 +26,9 @@ export default function Login() {
             .then(response => { 
                 if (response.data && response.status === 200) {
                     setGilda(response.data)
+
+                    //salvo l'accesso in locale
+                    localStorage.setItem("logged", JSON.stringify(response.data))
                     navigate("/");
                 }
             })

@@ -15,6 +15,8 @@ const Navbar = () =>
     function logout() {
         if(guild){
             setGuild(null);
+            //pulisco il local storage per evitare di mantenere il login
+            localStorage.clear();
         }
         if(party){
             setParty(null);

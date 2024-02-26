@@ -21,20 +21,26 @@ export default function HomepageGuild() {
         map_url: "",
         description: "",
         type: "",
-        patron: gilda.id
+        patron: JSON.parse(localStorage.getItem("logged")).id
     });
 
     useEffect(() => {
-        axios.get("/guilds/" + gilda.id + "/quests").then((resp) => {
+        let id;
+        if (localStorage.getItem("logged")) {
+            id = JSON.parse(localStorage.getItem("logged")).id;
+        
+          } 
+          console.log(id);
+        axios.get("/guilds/" + (id || gilda.id) + "/quests").then((resp) => {
             setAllQuests(resp.data.postedQuests);
             if (reRender) {
                 setReRender(false);
             }
         });
-    }, [gilda.id, reRender]);
+    }, [gilda, reRender]);
 
 
-    //Possibile metterlo in app?
+   
     function deleteQuest(id){
         axios.delete("/quests/"+ id).then((resp) => {
             setReRender(true);
