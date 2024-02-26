@@ -8,6 +8,7 @@ import { atom, useAtom } from 'jotai';
 import HomepageGuild from './components/guild/HomepageGuild';
 import QuestDetails from './components/quests/QuestDetails';
 import { useEffect } from 'react';
+import QuestEdit from './components/quests/QuestEdit';
 
 export const partyLogged = atom();
 export const guildLogged = atom();
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route index element={<AllQuests />}/>
         <Route path='login' element={<Login />}/>
+        <Route path='quest/:id'element={<QuestEdit/>}/>
         <Route path='guilds/:id/quests' element={<HomepageGuild />}/>
         <Route path='questdetails/:id' element={<QuestDetails />}/>
       </Routes>

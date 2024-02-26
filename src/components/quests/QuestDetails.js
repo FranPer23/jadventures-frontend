@@ -13,6 +13,9 @@ export default function QuestDetails()
     const [quest, setQuest] = useState(details);
     const [party, setParty] = useAtom(partyLogged);
     const [guild, setGuild] = useAtom(guildLogged);
+    const [updating, setUpdating] = useState(false);
+
+
 
   
   useEffect(() => {
@@ -28,6 +31,13 @@ export default function QuestDetails()
     });
     }, [id, setQuest]);
 
+    function save() {
+        axios.put("/quests/" + id, quest).then(() => setUpdating(false));
+      }
+    
+      function synchronize(e) {
+        setQuest({ ...quest, [e.target.name]: e.target.value });
+      }
 
 
     return (

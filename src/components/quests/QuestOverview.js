@@ -3,6 +3,7 @@ import { guildLogged, partyLogged } from "../../App";
 import { useAtom } from 'jotai';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import QuestEdit from './QuestEdit';
 
 export default function QuestOverview(props) {
 

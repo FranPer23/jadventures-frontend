@@ -52,7 +52,7 @@ export default function HomepageGuild() {
             // Resetta lo stato della quest a valori di default o vuoti
             setQuest({
                 date_created: new Date(), // Assicurati che la data venga aggiornata se necessario
-                status: "PENDING",
+                status: "AWAITING",
                 rank: "",
                 reward: "",
                 area: "",
