@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 
 export const partyLogged = atom();
 export const guildLogged = atom();
+export const details = atom ();
 
 function App() {
   const [Gilda, setGilda] = useAtom(guildLogged);
@@ -36,5 +37,7 @@ function App() {
     </BrowserRouter>
   );
 }
+
+
 
 export default App;
