@@ -10,7 +10,6 @@ export default function HomepageGuild() {
     const [gilda, setGilda] = useAtom(guildLogged);
     const [currentDate,setCurrentDate] = useState(new Date());
     const [reRender, setReRender] = useState(false);
-    const [questSubmissionCount, setQuestSubmissionCount] = useState(0); // Aggiunto per tracciare il numero di invii
 
     const [quest, setQuest] = useState({
         date_created: currentDate,
@@ -32,8 +31,10 @@ export default function HomepageGuild() {
                 setReRender(false);
             }
         });
-    }, [questSubmissionCount, gilda.id, reRender]);
+    }, [gilda.id, reRender]);
 
+
+    //Possibile metterlo in app?
     function deleteQuest(id){
         axios.delete("/quests/"+ id).then((resp) => {
             setReRender(true);
@@ -56,7 +57,7 @@ export default function HomepageGuild() {
                 patron: ""
             });
             // Incrementa il contatore per forzare il refresh della lista delle quest
-            setQuestSubmissionCount(prevCount => prevCount + 1);
+            setReRender(true);
         }).catch((error) => {
             console.error("There was an error submitting the quest:", error);
         });

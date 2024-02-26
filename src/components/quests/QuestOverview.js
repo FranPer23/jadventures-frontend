@@ -17,6 +17,14 @@ export default function QuestOverview(props) {
         return guild.id;
     });
 
+    // const [questId, setQuestId] = useState(() => {
+    //     if (props.postedQuest.id) {
+    //         return props.postedQuest.id;
+    //     }
+    //     return props.id;
+    // });
+
+
     return (
         <>
             <div className="questOverview col-4 d-flex justify-content-center text-center flex-wrap">
