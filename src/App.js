@@ -35,6 +35,7 @@ function App() {
         <Route path='quest/:id'element={<QuestEdit/>}/>
         <Route path='guilds/:id/quests' element={<HomepageGuild />}/>
         <Route path='questdetails/:id' element={<QuestDetails />}/>
+        <Route path='questupdate/:id' element={<QuestEdit />}/>
       </Routes>
     </BrowserRouter>
   );

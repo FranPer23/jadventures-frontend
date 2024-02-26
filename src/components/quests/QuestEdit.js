@@ -2,8 +2,8 @@ import { FOCUSABLE_SELECTOR } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 import { useState } from "react";
 
-const QuestEdit = (props) => {
-    const [editQuest, setEditQuest]= useState(props.quest);
+const QuestEdit = () => {
+    const [editQuest, setEditQuest]= useState([]);
 
     function synchronize(e) {
 
@@ -15,8 +15,7 @@ const QuestEdit = (props) => {
     function sendForm() {
 
         axios.put(`/quest/${editQuest.id}`, editQuest).then((response)=> {
-            props.editQuest(response.data);
-            props.annulla();
+            setEditQuest(response.data);
         });
     }
 
